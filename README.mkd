@@ -1,0 +1,40 @@
+# YouTube Audio Downloader
+Este é um script em Python que permite baixar áudio de vídeos ou playlists do YouTube. Ele utiliza a biblioteca pytube para fazer o download de vídeos e playlists, e a biblioteca retry para tentar novamente o download em caso de erros.
+
+## :memo: Pré-requisitos
+Antes de executar o script, certifique-se de ter as seguintes bibliotecas instaladas:
+
+- pytube
+- retry
+
+Você pode instalá-las usando o pip:
+
+```pip install pytube retry```
+
+## Uso
+- Clone o repositório ou baixe o arquivo do script.
+
+- Execute o script usando um interpretador Python:
+
+
+- Insira a URL do vídeo ou da playlist do YouTube quando solicitado.
+
+- O script irá processar a URL e iniciar o download dos arquivos de áudio.
+
+## Como funciona
+1. O script recebe a URL do vídeo ou da playlist do YouTube como entrada.
+
+2. A função process_link verifica se a URL é de uma playlist ou de um único vídeo. Se for uma playlist, ela obtém as URLs dos vídeos e cria uma pasta para salvar os arquivos de áudio. Se for um único vídeo, ela cria uma pasta com o título do vídeo e adiciona a URL do vídeo à lista de URLs.
+
+3. A função download_audio é responsável por baixar o áudio de uma URL específica. Ela utiliza a biblioteca pytube para obter o fluxo de áudio com a melhor taxa de bits disponível, faz o download e o salva na pasta criada na etapa anterior. O arquivo baixado é então renomeado para o título do vídeo com a extensão ".mp3".
+
+4. A função main solicita ao usuário uma URL do YouTube, a processa e cria threads para baixar cada arquivo de áudio em paralelo.
+
+5. O script inicia as threads de download e aguarda até que todas elas sejam concluídas usando o método join.
+
+6. Uma vez que todos os downloads estejam concluídos, o script é finalizado.
+
+7. Observação: O script inclui tratamento de erros usando o decorador retry. Se ocorrer algum erro durante o download, o script irá tentar novamente até 3 vezes, com um intervalo entre as tentativas.
+
+## Licença
+Este script é disponibilizado sob a Licença MIT. Sinta-se à vontade para usá-lo, modificá-lo e distribuí-lo conforme necessário.
