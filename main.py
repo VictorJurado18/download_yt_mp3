@@ -39,7 +39,7 @@ def process_link(link:str) -> list:
         print(f'Erro ao pegar nome da pasta - pasta terá um nome genérico \nErro: {e}')
 
 
-@retry(tries=3, delay=2, backoff=1.5)
+@retry(tries=5, delay=1)
 def download_audio(link:str, folder_name:str) -> None:
     """Efetua o download da musica 
 
@@ -59,6 +59,8 @@ def download_audio(link:str, folder_name:str) -> None:
 
     except Exception as e:
         print(f'Erro no download: {e}')
+        raise
+  
     
 def main():
     
